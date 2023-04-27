@@ -1,41 +1,42 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Routes,  } from 'react-router-dom';
+
+const style = {margin: '1rem', padding: '0.5', border: '2px solid black'}
 
 const Login = () => {
-  return (<h2>Login</h2>)
+  return (<h2 style={{...style, borderColor:'red'}}>Login</h2>)
 }
 
 const FriendsList = () => {
-  return (<h2>FriendsList</h2>)
+  return (<h2 style={{...style, borderColor:'blue'}} >FriendsList</h2>)
 }
 
 const AddFriends = () => {
-  return (<h2>AddFriends</h2>)
+  return (<h2 style={{...style, borderColor:'green'}}>AddFriends</h2>)
 }
-
-
 
 
 function App() {
   return (
-    <Router>
     <div className="App">
-      <Route path="/">
-        <Login/>
-    </Route>
-      <Route path="/login">
-        <Login/>
-      </Route>
-      <Route path="/friends">
-        <FriendsList/>
-      </Route>
-      <Route path="/friends/add">
-        <AddFriends/>
-      </Route>
+      <h1>Client Auth Project</h1>
+      <nav>
+        <Link to="/">Login</Link> <br/>
+        <Link to="/">Login</Link> <br/>
+        <Link to="FriendsList">FriendsList</Link> <br/>
+        <Link to="AddFriends">AddFriends</Link>  <br/>
+      </nav>
+      <Routes>
+      <Route exact  path="/" element={<Login />} />
+      <Route exact path="/" element={<Login />} />
+      <Route exact path="FriendsList" element={<FriendsList />} />
+      <Route exact  path="AddFriends" element={<AddFriends />} />
+
+
+      </Routes>
+
     </div>
-    </Router>
   );
 }
-
 export default App;
